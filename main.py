@@ -24,7 +24,7 @@ while True:
 
             author = comment.author
             counter += 1
-            print("%s %s" %(counter, author))
+            #print("%s %s" %(counter, author))
             if author == me:
                 print('not replying to self')
                 continue
