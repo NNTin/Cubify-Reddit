@@ -26,7 +26,7 @@ while True:
             counter += 1
             #print("%s %s" %(counter, author))
             if author == me:
-                print('not replying to self')
+                #print('[main] not replying to self')
                 continue
 
 
@@ -37,12 +37,12 @@ while True:
                 word = word.replace(' ', '')
                 result = cubify.cubify(word)
                 if (result):
-                    print('attempting to reply')
+                    #print('[main] attempting to reply')
                     comment.reply(result)
-                    print('replied to a comment')
+                    print('[main] replied to a comment')
 
                     break
 
     except:
-        print('Fatal Crash')
-        time.sleep(60)
+        print('Unknown Crash')
+        time.sleep(10)
