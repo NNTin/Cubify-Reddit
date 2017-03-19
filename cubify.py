@@ -1,19 +1,16 @@
 filler = '/'
 
 
-def cubify(word, diagonalWord=None):
-    if not ((word.__len__() >= 5) & (word.isalpha()) & (word.endswith(word[0]))):
+def cubify(word):
+    #if not ((word.__len__() >= 5) & (word.isalpha()) & (word.endswith(word[0]))):
+    if not ((word.__len__() >= 5) & (word.endswith(word[0]))):
+
         print("[cubify] This word (%s) can't be cubified." %word)
         return False
     else:
         print("[cubify] This word (%s) can be cubified." %word)
 
     word = word.upper()
-    if diagonalWord != None:
-        diagonalWord = diagonalWord.upper()
-        if not (diagonalWord.isalpha() & (diagonalWord.startswith(word[0])) & diagonalWord.endswith(word[0]) & (len(diagonalWord) == int(len(word) / 2 + 1))):
-            #print("[cubify] Diagonalword is not suited.")
-            diagonalWord = None
 
 
 
@@ -43,16 +40,10 @@ def cubify(word, diagonalWord=None):
 
     #write diagonal
     for i in range(1,gap):
-        if diagonalWord == None:
-            matrix[gap - i][i] = filler
-            matrix[gap - i][2 * gap + i - correction] = filler
-            matrix[3 * gap - i - correction][i] = filler
-            matrix[3 * gap - i - correction][2 * gap + i - correction] = filler
-        else:
-            matrix[gap - i][i] = diagonalWord[i]
-            matrix[gap - i][2 * gap + i] = diagonalWord[i]
-            matrix[3 * gap - i][i] = diagonalWord[i]
-            matrix[3 * gap - i][2 * gap + i] = diagonalWord[i]
+        matrix[gap - i][i] = filler
+        matrix[gap - i][2 * gap + i - correction] = filler
+        matrix[3 * gap - i - correction][i] = filler
+        matrix[3 * gap - i - correction][2 * gap + i - correction] = filler
 
 
     #making matrix pretty
