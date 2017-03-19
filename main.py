@@ -23,7 +23,6 @@ while True:
         for comment in comments:
 
             author = comment.author
-            counter += 1
             #print("%s %s" %(counter, author))
             if author == me:
                 #print('[main] not replying to self')
@@ -34,8 +33,12 @@ while True:
             words = findWords.findWords(text)
 
             for word in words:
+                if counter > 3:
+                    counter = 0
+                else:
+                    counter += 1
                 word = word.replace(' ', '')
-                result = cubify.cubify(word)
+                result = cubify.cubify(word=word, subsqaures=(counter == 0))
                 if (result):
                     #print('[main] attempting to reply')
                     comment.reply(result)
